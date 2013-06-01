@@ -24,7 +24,7 @@ macro(fix_default_compiler_settings_)
     foreach (flag_var
              CMAKE_CXX_FLAGS CMAKE_CXX_FLAGS_DEBUG CMAKE_CXX_FLAGS_RELEASE
              CMAKE_CXX_FLAGS_MINSIZEREL CMAKE_CXX_FLAGS_RELWITHDEBINFO)
-      if (NOT BUILD_SHARED_LIBS AND NOT gtest_force_shared_crt)
+      if (NOT BUILD_SHARED_GTEST_LIBS AND NOT gtest_force_shared_crt)
         # When Google Test is built as a shared library, it should also use
         # shared runtime libraries.  Otherwise, it may end up with multiple
         # copies of runtime library data in different modules, resulting in
@@ -120,7 +120,7 @@ function(cxx_library_with_type name type cxx_flags)
   set_target_properties(${name}
     PROPERTIES
     COMPILE_FLAGS "${cxx_flags}")
-  if (BUILD_SHARED_LIBS OR type STREQUAL "SHARED")
+  if (BUILD_SHARED_GTEST_LIBS OR type STREQUAL "SHARED")
     set_target_properties(${name}
       PROPERTIES
       COMPILE_DEFINITIONS "GTEST_CREATE_SHARED_LIBRARY=1")
@@ -153,7 +153,7 @@ function(cxx_executable_with_flags name cxx_flags libs)
       PROPERTIES
       COMPILE_FLAGS "${cxx_flags}")
   endif()
-  if (BUILD_SHARED_LIBS)
+  if (BUILD_SHARED_GTEST_LIBS)
     set_target_properties(${name}
       PROPERTIES
       COMPILE_DEFINITIONS "GTEST_LINKED_AS_SHARED_LIBRARY=1")

@@ -9,9 +9,9 @@ if(APPLE)
     mz_use_default_compiler_settings()
 endif()
 
-# BUILD_SHARED_LIBS is a standard CMake variable, but we declare it here to
+# BUILD_SHARED_GTEST_LIBS is a standard CMake variable, but we declare it here to
 # make it prominent in the GUI.
-option(BUILD_SHARED_LIBS "Build shared libraries (DLLs)." OFF)
+option(BUILD_SHARED_GTEST_LIBS "Build shared libraries (DLLs)." OFF)
 
 # When other libraries are using a shared version of runtime libraries,
 # Google Test also has to use one.
