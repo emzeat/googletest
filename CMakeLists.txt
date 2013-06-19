@@ -5,9 +5,7 @@
 # ctest.  You can select which tests to run using 'ctest -R regex'.
 # For more options, run 'ctest --help'.
 
-if(APPLE)
-    mz_use_default_compiler_settings()
-endif()
+mz_use_default_compiler_settings()
 
 # BUILD_SHARED_GTEST_LIBS is a standard CMake variable, but we declare it here to
 # make it prominent in the GUI.
